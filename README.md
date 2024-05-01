@@ -1,5 +1,6 @@
 # Documentação: Ferramenta de Relatórios Fotográficos
 Versão 2.0.1 de 01/05/2024
+[Se o alerta "Risco de Segurança" for exibido](https://github.com/EduardoVilar23/modinsaut/blob/main/macroblock.md)
 
 ---
 
