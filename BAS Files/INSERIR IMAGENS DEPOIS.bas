@@ -1,7 +1,6 @@
-Attribute VB_Name = "Módulo10"
 Sub InserirImagensDepois()
 
-MsgBox ("INSERIR IMAGENS DEPOIS - Antes de prosseguir, cerifique-se de que a pasta selecionada possua apenas as imagens e nenhum outro arquivo. As imagens devem ter os nomes no padrão -> (1), (2), (3), etc. tendo as extensões JPG ou JPEG. Atualizado em 01/05/2024")
+MsgBox ("INSERIR IMAGENS DEPOIS - Antes de prosseguir, cerifique-se de que a pasta selecionada possua apenas as imagens e nenhum outro arquivo. As imagens devem ter os nomes no padrÃ£o -> (1), (2), (3), etc. tendo as extensÃµes JPG ou JPEG. Atualizado em 01/05/2024")
 
 Dim fileNameAndPath As Variant
 Dim image As Picture
@@ -19,16 +18,16 @@ With folderPicker
     picsFolder = .SelectedItems(1) & "\"
 End With
 
-'Obter a extensão das imagens
+'Obter a extensÃ£o das imagens
 Dim filesExt As String
 
-filesExt = Application.InputBox("Digite a extensão das imagens (JPEG ou JPG)")
+filesExt = Application.InputBox("Digite a extensÃ£o das imagens (JPEG ou JPG)")
 filesExt = LCase(filesExt)
 If Not (filesExt = "jpg" Or filesExt = "jpeg") Then
-MsgBox ("Esta não é uma extensão válida. Digite novamente")
-filesExt = Application.InputBox("Digite a extensão das imagens (Apenas JPEG ou JPG)")
-    If Not (filesExt = "jpg" Or filesExt = "jpeg") Then 'Pergunta a extensão pela segunda vez, e se for inválida novamente pede pro usuário conferir a pasta e executar novamente
-    MsgBox ("Extensão inválida. Verifique a sua pasta, todas as imagens devem ter a extensão JPEG ou JPG. Quando estiver tudo certo, execute novamente.")
+MsgBox ("Esta nÃ£o Ã© uma extensÃ£o vÃ¡lida. Digite novamente")
+filesExt = Application.InputBox("Digite a extensÃ£o das imagens (Apenas JPEG ou JPG)")
+    If Not (filesExt = "jpg" Or filesExt = "jpeg") Then 'Pergunta a extensÃ£o pela segunda vez, e se for invÃ¡lida novamente pede pro usuÃ¡rio conferir a pasta e executar novamente
+    MsgBox ("ExtensÃ£o invÃ¡lida. Verifique a sua pasta, todas as imagens devem ter a extensÃ£o JPEG ou JPG. Quando estiver tudo certo, execute novamente.")
     Exit Sub
     End If
 End If
@@ -37,9 +36,9 @@ End If
 Dim imageCounter As Double
 imageCounter = 0
 
-'Instruções e coleta da quantidade de imagens de buracos a serem inseridos
+'InstruÃ§Ãµes e coleta da quantidade de imagens de buracos a serem inseridos
 Dim buracosAmount As Double
-MsgBox ("ATENÇÃO: Devido a limitações técnicas o limite é de 100 imagens. Obrigado!")
+MsgBox ("ATENÃ‡ÃƒO: Devido a limitaÃ§Ãµes tÃ©cnicas o limite Ã© de 100 imagens. Obrigado!")
 buracosAmount = Application.InputBox("Informe a quantidade de imagens")
 'Verificar se foi inserido valor superior a 100
 If buracosAmount > 100 Then
@@ -47,7 +46,7 @@ If buracosAmount > 100 Then
     Exit Sub
 End If
 
-'Declarando as dimensões da imagem para 7x13cm
+'Declarando as dimensÃµes da imagem para 7x13cm
 Dim centimetersWidth As Double
 Dim centimetersHeight As Double
 centimetersWidth = 13
@@ -59,31 +58,31 @@ Dim pointsH As Double
 pointsW = Application.CentimetersToPoints(centimetersWidth)
 pointsH = Application.CentimetersToPoints(centimetersHeight)
 
-'Verificando se a seleção foi cancelada ou não obteve imagem nenhuma
+'Verificando se a seleÃ§Ã£o foi cancelada ou nÃ£o obteve imagem nenhuma
 If picsFolder = False Then Exit Sub
 
-' Definindo variáveis para controle de posicionamento
+' Definindo variÃ¡veis para controle de posicionamento
 Dim leftPosition As Double
 Dim topPosition As Double
-leftPosition = pointsW + Application.CentimetersToPoints(2.1) 'Largura da imagem a esqueda + margem para ficar no lugar correto (pode ser substituído por uma única margem em breve)
+leftPosition = pointsW + Application.CentimetersToPoints(2.1) 'Largura da imagem a esqueda + margem para ficar no lugar correto (pode ser substituÃ­do por uma Ãºnica margem em breve)
 topPosition = ActiveSheet.Range("A17").Top + ActiveSheet.Cells(1, 1).Height
 
 Dim colOffset As Integer
-colOffset = 1 ' Começamos na coluna A
+colOffset = 1 ' ComeÃ§amos na coluna A
 
 Dim insertConfirmation As Variant
 
-insertConfirmation = MsgBox("Você está prestes a inser ir " & buracosAmount & " imagens. Deseja inserir?", vbYesNo)
+insertConfirmation = MsgBox("VocÃª estÃ¡ prestes a inser ir " & buracosAmount & " imagens. Deseja inserir?", vbYesNo)
 If insertConfirmation = 7 Then Exit Sub
 
 While imageCounter < buracosAmount
     imageCounter = imageCounter + 1
-    'Verifica se existe a imagem do contador atual (imagem (1) ou (2) por exemplo) com o formato (jpg ou jpeg) que o usuário selecionou
-    If Dir(picsFolder & "(" + CStr(imageCounter) + ")." + filesExt) = "" Then
-        MsgBox "Não foi possível localizar a imagem (" + CStr(imageCounter) + ")." + filesExt + ". Verifique se esta imagem existe na sua pasta, se você selecionou a pasta correta, ou se está com a extensão correta."
+    'Verifica se existe a imagem do contador atual (imagem (1) ou (2) por exemplo) com o formato (jpg ou jpeg) que o usuÃ¡rio selecionou
+    If Dir(picsFolder & "foto (" + CStr(imageCounter) + ")." + filesExt) = "" Then
+        MsgBox "NÃ£o foi possÃ­vel localizar a imagem 'foto (" + CStr(imageCounter) + ")." + filesExt + "'. Verifique se esta imagem existe na sua pasta, se as imagens foram nomeadas corretamente, se vocÃª selecionou a pasta correta, ou se estÃ¡ com a extensÃ£o correta."
         Exit Sub
     End If
-    Set image = ActiveSheet.Pictures.Insert(picsFolder & "(" + CStr(imageCounter) + ")." + filesExt)
+    Set image = ActiveSheet.Pictures.Insert(picsFolder & "foto (" + CStr(imageCounter) + ")." + filesExt)
     With image
         ' Definindo como falso o bloqueio do aspecto da imagem
         .ShapeRange.LockAspectRatio = msoFalse
@@ -95,7 +94,7 @@ While imageCounter < buracosAmount
         .Height = pointsH
     End With
     
-        topPosition = topPosition + pointsH + (ActiveSheet.Cells(1, 1).Height * 4.775) ' Movendo para a próxima linha; Posicao a cima + altura da imagem + margem mais precisa possivel para alinhar a distanica entre as imagens da distancia entre os espacos destinados (4,775x a altura de uma celula)
+        topPosition = topPosition + pointsH + (ActiveSheet.Cells(1, 1).Height * 4.775) ' Movendo para a prÃ³xima linha; Posicao a cima + altura da imagem + margem mais precisa possivel para alinhar a distanica entre as imagens da distancia entre os espacos destinados (4,775x a altura de uma celula)
 Wend
 
 End Sub
