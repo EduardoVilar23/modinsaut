@@ -1,6 +1,6 @@
 Sub InserirImagensAntes()
 
-MsgBox ("INSERIR IMAGENS ANTES - Antes de prosseguir, cerifique-se de que a pasta selecionada possua apenas as imagens e nenhum outro arquivo. As imagens devem ter os nomes no padrão -> (1), (2), (3), etc. tendo as extensões JPG ou JPEG. Atualizado em 01/05/2024")
+MsgBox ("INSERIR IMAGENS ANTES - Antes de prosseguir, cerifique-se de que a pasta selecionada possua apenas as imagens e nenhum outro arquivo. As imagens devem ter os nomes no padrão -> foto (1), foto (2), foto (3), etc. tendo as extensões JPG ou JPEG. Atualizado em 03/05/2024")
 
 Dim fileNameAndPath As Variant
 Dim image As Picture
