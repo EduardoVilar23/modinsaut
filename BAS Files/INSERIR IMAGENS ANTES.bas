@@ -1,6 +1,6 @@
-Sub InserirImagensAntes()
+Sub InserirImagensDepois()
 
-MsgBox ("INSERIR IMAGENS ANTES - Antes de prosseguir, cerifique-se de que a pasta selecionada possua apenas as imagens e nenhum outro arquivo. As imagens devem ter os nomes no padrão -> foto (1), foto (2), foto (3), etc. tendo as extensões JPG ou JPEG. Atualizado em 03/05/2024")
+MsgBox ("INSERIR IMAGENS DEPOIS - Antes de prosseguir, cerifique-se de que a pasta selecionada possua apenas as imagens e nenhum outro arquivo. As imagens devem ter os nomes no padrão -> foto (1), foto (2), foto (3), etc. tendo as extensões JPG ou JPEG. Atualizado em 03/05/2024")
 
 Dim fileNameAndPath As Variant
 Dim image As Picture
@@ -31,7 +31,6 @@ filesExt = Application.InputBox("Digite a extensão das imagens (Apenas JPEG ou 
     Exit Sub
     End If
 End If
-
 
 'Declarar contador para as imagens de buracos
 Dim imageCounter As Double
@@ -65,7 +64,7 @@ If picsFolder = False Then Exit Sub
 ' Definindo variáveis para controle de posicionamento
 Dim leftPosition As Double
 Dim topPosition As Double
-leftPosition = ActiveSheet.Range("A1").Left + Application.CentimetersToPoints(0.4)
+leftPosition = pointsW + Application.CentimetersToPoints(2.1) 'Largura da imagem a esqueda + margem para ficar no lugar correto (pode ser substituído por uma única margem em breve)
 topPosition = ActiveSheet.Range("A17").Top + ActiveSheet.Cells(1, 1).Height
 
 Dim colOffset As Integer
@@ -94,10 +93,8 @@ While imageCounter < buracosAmount
         .Width = pointsW
         .Height = pointsH
     End With
-
-        leftPosition = ActiveSheet.Range("A1").Left + Application.CentimetersToPoints(0.4) ' Voltando para a coluna inicial + margem vertical da imagem de cima
+    
         topPosition = topPosition + pointsH + (ActiveSheet.Cells(1, 1).Height * 4.775) ' Movendo para a próxima linha; Posicao a cima + altura da imagem + margem mais precisa possivel para alinhar a distanica entre as imagens da distancia entre os espacos destinados (4,775x a altura de uma celula)
-        
 Wend
 
 End Sub
